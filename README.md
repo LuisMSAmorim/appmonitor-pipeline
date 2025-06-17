@@ -22,3 +22,22 @@ Tags:
 - Facilitam o versionamento semântico
 - Permitem rollback
 - Auxiliam na documentação
+
+### Variáveis e Segredos no GitHub Actions
+
+#### Variables (vars)
+- Armazenam dados não-sensíveis
+- Visíveis nos logs do workflow
+- Podem ser reutilizadas em múltiplos workflows
+- Acessadas via contexto vars: ${{ vars.NOME_DA_VARIAVEL }}
+- Exemplo: SUPPORT_EMAIL e APP_ENV
+
+#### Secrets (secrets)
+- Armazenam dados sensíveis
+- Exemplo: API_KEY
+
+#### Environment Variables (env)
+- Definidas no nível do workflow, job ou step
+- Disponíveis durante a execução
+- Podem referenciar vars e secrets
+- Exemplo: APP_ENV
