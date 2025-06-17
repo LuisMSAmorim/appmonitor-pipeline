@@ -55,3 +55,22 @@ Logs detalhados e resumos de execução são ferramentas essenciais para identif
 #### Job Summaries
 - O que são: São painéis personalizados gerados ao final de um workflow, que exibem informações de forma visual.
 - Como ajudam: Oferecem uma visão do resultado do pipeline.
+
+### Meus Workflows em Ação
+
+Para automatizar minhas tarefas, criei alguns workflows que cuidam de tudo, desde a verificação de status até o deploy em produção.
+
+#### Status Check (status-check.yml)
+Este é o meu workflow mais simples. Eu o configurei para rodar de tempos em tempos, a cada 6 horas, apenas para verificar se o script principal está funcionando. É um jeito rápido de saber se a base do sistema está saudável.
+
+#### Pipeline de CI (ci.yml)
+Este é o meu principal pipeline de integração. Ele entra em ação sempre que eu atualizo a branch main ou abro um pull request. O processo tem algumas fases: primeiro, ele valida a sintaxe dos scripts; depois, simula a execução de testes; e, por fim, empacota o projeto em um arquivo zip. Para facilitar, eu também o configurei para gerar um resumo com o resultado de cada etapa, avisar sobre possíveis melhorias e ativar logs detalhados se eu precisar investigar algo.
+
+#### Monitor de Variáveis (run-monitor.yml)
+Criei este workflow para demonstrar como eu uso as variáveis e segredos do GitHub. Nele, coloquei exemplos práticos de como acessar informações de ambiente, como o email de suporte, ou chaves de API que precisam ficar seguras.
+
+#### Deploy em Produção (deploy.yml)
+Este é o pipeline que leva meu código para o ambiente de produção. Ele só é acionado quando eu faço um push na branch main. A parte mais importante é que eu adicionei uma trava de segurança: o deploy precisa ser aprovado manualmente. Isso me dá um controle extra e garante que só subo para produção o que for validado.
+
+#### Diagnóstico do Sistema (diagnostic.yml)
+Criei esta ferramenta que posso rodar quando eu quiser para fazer um check-up no ambiente. Ela verifica se as variáveis e segredos essenciais, como a chave da API, estão configurados corretamente. Se algo estiver faltando, o workflow me avisa e ainda dá uma dica de como arrumar.
