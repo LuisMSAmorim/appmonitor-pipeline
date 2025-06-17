@@ -16,7 +16,7 @@ jobs:
     runs-on: ubuntu-latest
     steps:
       - name: Usar variável do repositório
-        run: echo "Email de suporte: ${{ vars.SUPPORT_EMAIL }}"
+        run: 'echo "Email de suporte: ${{ vars.SUPPORT_EMAIL }}"'
 
   secrets-job:
     runs-on: ubuntu-latest
