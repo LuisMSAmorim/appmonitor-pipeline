@@ -10,7 +10,7 @@ jobs:
       APP_ENV: ${{ vars.APP_ENV }}
     steps:
       - name: Usar variável de ambiente
-        run: echo "Ambiente da aplicação: $APP_ENV"
+        run: 'echo "Ambiente da aplicação: $APP_ENV"'
 
   vars-job:
     runs-on: ubuntu-latest
