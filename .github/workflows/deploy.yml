@@ -1,0 +1,16 @@
+name: Deploy to Production
+
+on:
+  push:
+    branches:
+      - main
+
+jobs:
+  deploy:
+    runs-on: ubuntu-latest
+    environment: 
+      name: production
+      url: https://${{ vars.PROD_DOMAIN }}
+    steps:
+      - name: Deploy to production
+        run: echo "Deploying to ${{ vars.PROD_DOMAIN }}" 
