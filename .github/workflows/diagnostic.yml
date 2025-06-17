@@ -1,0 +1,40 @@
+name: System Diagnostics
+
+on:
+  workflow_dispatch:
+
+jobs:
+  run-diagnostics:
+    runs-on: ubuntu-latest
+    steps:
+      - name: Perform Diagnostics
+        run: |
+          echo "### Diagnóstico do Ambiente" >> $GITHUB_STEP_SUMMARY
+          echo "" >> $GITHUB_STEP_SUMMARY
+          
+          EXIT_CODE=0
+          
+          # Verifica a variável APP_ENV
+          if [[ -z "${{ vars.APP_ENV }}" ]]; then
+            echo "::error::Variável obrigatória APP_ENV não está definida."
+            echo "Variável APP_ENV: Não encontrada." >> $GITHUB_STEP_SUMMARY
+            echo "Sugestão: Adicione a variável \`APP_ENV\` nas configurações do repositório em \`Settings > Secrets and variables > Actions\`." >> $GITHUB_STEP_SUMMARY
+            EXIT_CODE=1
+          else
+            echo "Variável APP_ENV: Definida com sucesso." >> $GITHUB_STEP_SUMMARY
+            echo "   - Valor: \`${{ vars.APP_ENV }}\`" >> $GITHUB_STEP_SUMMARY
+          fi
+          
+          echo "" >> $GITHUB_STEP_SUMMARY
+          
+          # Verifica o segredo API_KEY
+          if [[ -z "${{ secrets.API_KEY }}" ]]; then
+            echo "::error::Segredo obrigatório API_KEY não está definido."
+            echo "Segredo API_KEY: Não encontrado." >> $GITHUB_STEP_SUMMARY
+            echo "Sugestão: Adicione o segredo \`API_KEY\` nas configurações do repositório em \`Settings > Secrets and variables > Actions\`." >> $GITHUB_STEP_SUMMARY
+            EXIT_CODE=1
+          else
+            echo "✅ Segredo API_KEY: Configurado com sucesso." >> $GITHUB_STEP_SUMMARY
+          fi
+          
+          exit $EXIT_CODE 
