@@ -1,3 +1,5 @@
+[![Status do Pipeline CI](https://img.shields.io/github/actions/workflow/status/luisMSAmorim/appmonitor-pipeline/ci.yml?branch=main)](https://github.com/luisMSAmorim/appmonitor-pipeline/actions/workflows/ci.yml)
+
 ## Este é o assessment da disciplina Pipelines de CI/CD e DevOps
 
 ### O papel do Git na Entrega Contínua
@@ -41,3 +43,15 @@ Tags:
 - Disponíveis durante a execução
 - Podem referenciar vars e secrets
 - Exemplo: APP_ENV
+
+### Pipelines com Logs e Resumos
+
+Logs detalhados e resumos de execução são ferramentas essenciais para identificar e resolver problemas de CI/CD.
+
+#### Logs de Debug
+- O que são: Fornecem uma visão dos passos da execução do workflow. Ao ativar RUNNER_DEBUG: true, o executor exibe informações detalhadas sobre as configurações, chamadas de API e comandos que foram executados.
+- Como ajudam: Permitem a identificação de onde estão as falha. Por exemplo, se um comando falhar, o log de debug vai mostrar os argumentos completos, variáveis de ambiente e a saída de erro, facilitando a correção.
+
+#### Job Summaries
+- O que são: São painéis personalizados gerados ao final de um workflow, que exibem informações de forma visual.
+- Como ajudam: Oferecem uma visão do resultado do pipeline.
