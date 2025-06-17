@@ -1,0 +1,27 @@
+name: Monitor Runner
+
+on:
+  workflow_dispatch:
+
+jobs:
+  env-job:
+    runs-on: ubuntu-latest
+    env:
+      APP_ENV: ${{ vars.APP_ENV }}
+    steps:
+      - name: Usar variável de ambiente
+        run: echo "Ambiente da aplicação: $APP_ENV"
+
+  vars-job:
+    runs-on: ubuntu-latest
+    steps:
+      - name: Usar variável do repositório
+        run: echo "Email de suporte: ${{ vars.SUPPORT_EMAIL }}"
+
+  secrets-job:
+    runs-on: ubuntu-latest
+    steps:
+      - name: Usar segredo
+        run: |
+          echo "API Key está definida: ${{ secrets.API_KEY != '' }}"
+          
